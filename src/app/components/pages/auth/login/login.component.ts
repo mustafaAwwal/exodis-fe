@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormControl, Validators, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +9,48 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
-
-  ngOnInit() {
+  loginDataForm : FormGroup;
+  private loginValidationMassages = {
+    'email' : [
+      {type: 'required',massage: 'Email Is Required'},
+      {type: 'pattern',massage: 'enter a valid email address'}
+      
+    ],
+    'password' : [
+      {type: 'required',massage: 'Password is Required'},
+      {type: 'minlength',massage: 'password is less than 8 characters'}
+    ]
   }
 
-  login(email,password) {
-    // console.log(email,password)
+
+  constructor(private router: Router, private fb: FormBuilder) { 
+    this.buildingLoginForm();
+  }
+
+  ngOnInit() {
+    
+  }
+
+  buildingLoginForm() {
+
+    this.loginDataForm = this.fb.group({
+      email: ['',[
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+      password: ['',[
+        Validators.required,
+        Validators.minLength(7)
+      ]]
+    }
+    );
+
+
+  }
+  
+  
+
+  login(loginDataForm) {
+    console.log(loginDataForm);
     this.router.navigate(['admin','dashboard'])
 
       

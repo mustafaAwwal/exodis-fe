@@ -5,18 +5,23 @@
         </div>
         <div class="col-md-4 offset-lg-0 offset-md-4 offset-4 col-4">
             <div class="ml-auto loginAreaArrangement loginArea">
-                <form class="customFormStyling ">
+                <form class="customFormStyling " [formGroup]="loginDataForm" (ngSubmit)="login(loginDataForm.value)" autocomplete="off">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address or Username</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" #email name ="email" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <input type="email" formControlName = "email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                        <div *ngFor="let validation of loginValidationMassages.email">
+                            <div class="errorMassage" *ngIf="loginDataForm.get('email').hasError(validation.type) && (loginDataForm.get('email').dirty || loginDataForm.get('email').touched)">{{validation.massage}} </div>                            
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" #password name="password" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
+                        <div *ngFor="let validation of loginValidationMassages.password">
+                            <div class="errorMassage" *ngIf="loginDataForm.get('password').hasError(validation.type) && (loginDataForm.get('password').dirty || loginDataForm.get('password').touched)">{{validation.massage}}</div>                            
+                        </div>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-primary submit-login"  (click)="login(email.value,password.value)">Login</a>
+                        <button type="submit" [disabled]="!loginDataForm.valid" class="btn btn-primary submit-login" >Login</button>
                     </div>
                     <hr class="customLineDivision">
                     <p class="signUpInfo">If you don't have a account,</p>

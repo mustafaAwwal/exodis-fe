@@ -24,8 +24,9 @@ html,body {
         box-shadow: 0 0 5px rgba(26, 26, 26, 0.5);
         background-color: rgb(20, 20, 20);
         color:white !important;
-
-
+    }
+    .errorMassage {
+        color: red;
         
     }
     input[type=email]::placeholder,input[type=password]::placeholder,input[type=text]::placeholder{
@@ -36,8 +37,6 @@ html,body {
         background-color: rgb(59, 59, 59); 
         transition: 100ms;
         border: none;   
-
-        
     }
     
 }
