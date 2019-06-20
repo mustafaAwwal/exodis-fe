@@ -1,0 +1,11 @@
+.sideNavStyling {
+    z-index: 100 !important;
+    height: 100%;
+    position: fixed;
+    top: 50px;
+    width:220px;
+    background-color: white;
+    .nav {
+        padding: 20px;        
+    }
+}

@@ -1,0 +1,46 @@
+.loginAreaArrangement {
+    min-height: 430px;
+    min-width: 300px;
+    margin-top: 130px;
+    max-width: 400px;
+    
+    margin-right:5%;
+}
+
+.imageBox {
+    max-height: 700px;
+    .designImage {
+        height: 100%;
+        
+    }
+}
+
+.loginBackground {
+    height: 100%;
+    background-image: url("../../../../../assets/pageDesignPhotos/reactivespaceArtLogin2.png");
+    background-size: cover;
+}
+
+.loginArea {
+    .submit-login {
+        background-color: rgba(58, 155, 191, 1);
+        width:100%;
+        cursor: pointer;
+        color: white !important;
+        border: none;
+        border-radius: 0px !important;
+        box-shadow: 0 0 5px rgba(26, 26, 26, 0.5) ;
+    
+    }
+    
+    .submit-login:active {
+        background-color: white !important;
+        color: rgba(58, 155, 191, 1) !important;
+        transition: 300ms;
+
+    }
+    .signUpInfo {
+        color:white;
+    }
+}
+

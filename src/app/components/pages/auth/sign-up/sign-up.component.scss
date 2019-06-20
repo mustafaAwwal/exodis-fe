@@ -1,0 +1,21 @@
+.signUpAreaArrangement {
+  margin-top:130px;
+  .submit-signup {
+    background-color: rgba(58, 155, 191, 1);
+    width:100%;
+    cursor: pointer;
+    color: white !important;
+    border: none;
+    border-radius: 0px !important;
+    box-shadow: 0 0 5px rgba(26, 26, 26, 0.5) ;
+    
+
+  }
+  .submit-signup:active {
+    background-color: white !important;
+    color: rgba(58, 155, 191, 1) !important;
+    transition: 300ms;
+
+}
+
+}
