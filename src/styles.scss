@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+html,body {
+    height: 100% !important;
+    background-color: #3a9bbf !important;
+    z-index: 1 !important;
+}
+
+
+
+.customLineDivision {
+    background-color:rgba(58, 155, 191, 1);
+
+}
+
+
+.customFormStyling {
+    background-color: rgba(50, 59, 68, 1);
+    color: rgba(58, 155, 191, 1);
+    padding:30px;
+    box-shadow: 0 0 5px rgba(26, 26, 26, 0.5) ;
+    input[type=email],input[type=password],input[type=text] {
+        border-radius: 0px !important;
+        border:none;
+        box-shadow: 0 0 5px rgba(26, 26, 26, 0.5);
+        background-color: rgb(20, 20, 20);
+        color:white !important;
+
+
+        
+    }
+    input[type=email]::placeholder,input[type=password]::placeholder,input[type=text]::placeholder{
+        color:white;
+    }
+    input[type=email]:focus,input[type=password]:focus,input[type=text]:focus {
+        box-shadow: 0 0 10px rgba(26, 26, 26, 0.5)!important;
+        background-color: rgb(59, 59, 59); 
+        transition: 100ms;
+        border: none;   
+
+        
+    }
+    
+}
