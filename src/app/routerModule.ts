@@ -10,7 +10,7 @@ const routes : Routes = [
     {path: '', component: LandingPageComponent},
     {path: 'login',component: LoginComponent},
     {path: 'signup',component: SignUpComponent},
-    {path: 'admin', children: [
+    {path: 'admin',children: [
         {path: 'dashboard', component: AdminDashboardComponent}
     ]}
 ]

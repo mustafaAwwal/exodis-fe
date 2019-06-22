@@ -1,45 +1,93 @@
 <div class="container-fluid">
   <div class="row">
       <div class="col-md-8 offset-md-2 offset-1 ">
-          <form class="customFormStyling signUpAreaArrangement">
+          <form autocomplete = "off" class="customFormStyling signUpAreaArrangement" [formGroup]= "signUpForm" (ngSubmit)="signUp(signUpForm.value)">
               <div class="form-group row">
                 <div class="col-md-6 col-12">
                     <label for="staticEmail" >Email</label>
-                    <input type="email" class="form-control" id="email" #email name="email" placeholder="Enter Email">
+                    <input type="email" formControlName="email" class="form-control" id="email" placeholder="Enter Email">
+                    <div *ngFor="let validation of signUpFormValidations.email">
+                      <div *ngIf="signUpForm.get('email').dirty || signUpForm.get('email').touched">
+                          <div class="errorMassage" @errorInsertionAnimation *ngIf="signUpForm.get('email').hasError(validation.type)">{{validation.massage}}</div>
+                      </div>
+                    </div>
                 </div>
                 <div class="col-md-6 col-12">
                     <label for="username" >Username</label>
-                    <input type="text" class="form-control" id="username" #username name="username" placeholder="Enter Username">
+                    <input type="text" formControlName="username" class="form-control" id="username"  placeholder="Enter Username">
+                    <div *ngFor="let validation of signUpFormValidations.username">
+                      <div *ngIf="signUpForm.get('username').dirty || signUpForm.get('username').touched">
+                        <div class="errorMassage" @errorInsertionAnimation *ngIf="signUpForm.get('username').hasError(validation.type)">{{validation.massage}}</div>
+                      </div>
+                    </div>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-6 col-12">
                     <label for="country" >Country</label>
-                    <input type="text" class="form-control" id="country" #country name="country" placeholder="Enter Country">
-                </div>
+                    <div class="customSelectMenu">
+                      <select class="form-control" id="country" formControlName="country">
+                        <option value="" selected>Choose Country</option>
+                        <option *ngFor="let country of countries" value="{{country.name}}">{{country.name}}</option>
+                      </select>
+                      <div *ngIf="signUpForm.get('country').touched || signUpForm.get('country').dirty">
+                        <div *ngFor="let validation of signUpFormValidations.country">
+                          <div @errorInsertionAnimation class="errorMassage" *ngIf="signUpForm.get('country').hasError('required')">{{validation.massage}}</div>
+                        </div>
+                      </div>
+                    </div>
+                   
+                  </div>
                 <div class="col-md-6 col-12">
-                    <label for="buisnessName" >BrandName</label>
-                    <input type="text" class="form-control" id="businessName" #businessName name="businessName" placeholder="Enter BrandName">
+                    <label for="businessName" >BusinessName</label>
+                    <input type="text" formControlName="businessName" class="form-control" id="businessName" placeholder="Enter BrandName">
+                    <div *ngFor="let validation of signUpFormValidations.businessName">
+                      <div *ngIf="signUpForm.get('businessName').dirty || signUpForm.get('businessName').touched ">
+                        <div @errorInsertionAnimation class="errorMassage" *ngIf="signUpForm.get('businessName').hasError(validation.type)">
+                          {{validation.massage}}
+                        </div>
+                      </div>
+                    </div>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-6 col-12">
                     <label for="password" >Password</label>
-                    <input type="password" class="form-control" id="password" name="password" #password placeholder="Password">
+                    <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password">
+                    <div *ngFor="let validation of signUpFormValidations.password">
+                      <div *ngIf="signUpForm.get('password').dirty || signUpForm.get('password').touched">
+                        <div @errorInsertionAnimation class="errorMassage" *ngIf="signUpForm.get('password').hasError(validation.type)">
+                          {{validation.massage}}
+                        </div>
+                      </div>
+                    </div>
                 </div>
                 <div class="col-md-6 col-12">
                     <label for="rePassword" >Re-Enter Password</label>
-                    <input type="password" class="form-control" id="rePassword" name="rePassword" #rePassword placeholder="Password">
+                    <input type="password" formControlName="rePassword" class="form-control" id="rePassword" placeholder="Password">
+                    <div *ngIf="signUpForm.get('rePassword').dirty || signUpForm.get('rePassword').touched">
+                      <div *ngFor="let validation of signUpFormValidations.rePassword">
+                          <div @errorInsertionAnimation class="errorMassage" *ngIf="signUpForm.get('rePassword').hasError(validation.type)">
+                            {{validation.massage}}
+                            
+                          </div>
+                      </div>
+                      <div @errorInsertionAnimation class="errorMassage" *ngIf="signUpForm.hasError('notPassword')">
+                        The password doesen't match
+                      </div>
+                      
+                    </div>
+                    
+                    
                 </div>
               </div>
               <hr class="customLineDivision">
               <div class="row">
                 <div class="col-md-2 offset-md-10 ">
-                  <a class="btn btn-primary submit-signup" (click)="signup(email.value,username.value,country.value,businessName.value,password.value)">SignUp</a>
+                  <button type="submit" [disabled]= "signUpForm.invalid" class="btn btn-primary submit-signup">SignUp</button>
                 </div>
               </div>
             </form>
       </div>
-     
   </div>
 </div>

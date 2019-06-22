@@ -1,3 +1,11 @@
 .bg-dark {
-    background-color: rgba(50, 59, 68, 1) !important;
+    background-color: #141414 !important;
+    box-shadow: 0 5px 15px rgba(55,55,55,0.5);
+}
+
+.navbar-brand {
+    padding: 0px;
+    img{
+        height: 40px;
+    }
 }

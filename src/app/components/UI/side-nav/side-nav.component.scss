@@ -7,6 +7,14 @@
     background-color: white;
     box-shadow: 6px -1px 15px rgba(55, 55, 55, 0.5);
     .nav {
-        padding: 20px;        
+        margin-top: 20px;
+        .nav-link {
+            padding: 15px;
+        }
+    }
+    .active { 
+        background-color: #c2c2c2;
+        border-left:3px solid #3A9BBF;
+        color : #3A9BBF;
     }
 }

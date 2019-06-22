@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, Validators, FormGroup} from '@angular/forms';
+import { errorMassageAnimation } from 'src/app/components/animations/errorMassageAnimation'
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  animations: [
+    errorMassageAnimation
+  ]
 })
 export class LoginComponent implements OnInit {
 

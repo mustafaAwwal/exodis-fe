@@ -11,7 +11,12 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 
 
 //These imports are for the icon 
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faHistory,faSlidersH,faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faWindowMaximize, faUser } from '@fortawesome/free-regular-svg-icons';
+
+//Imports for Animations 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+
 
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/pages/common/landing-page/landing-page.component';
@@ -36,7 +41,8 @@ import { SideNavComponent } from './components/UI/side-nav/side-nav.component';
     AppRoutingModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -44,7 +50,7 @@ import { SideNavComponent } from './components/UI/side-nav/side-nav.component';
 export class AppModule { 
 
   constructor() {
-    library.add(faHome)
+    library.add(faWindowMaximize,faHistory,faSlidersH,faUserCircle)
   }
 
 }
