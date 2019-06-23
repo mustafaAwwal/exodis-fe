@@ -7,9 +7,9 @@ import {AdminDashboardComponent} from 'src/app/components/pages/admin/admin-dash
 
 
 const routes : Routes = [
-    {path: '', component: LandingPageComponent},
-    {path: 'login',component: LoginComponent},
-    {path: 'signup',component: SignUpComponent},
+    {path: '', component: LandingPageComponent, data: {animation: 'landingPage'}},
+    {path: 'login',component: LoginComponent, data: {animation: 'login'}},
+    {path: 'signup',component: SignUpComponent, data: {animation: 'signup'} },
     {path: 'admin',children: [
         {path: 'dashboard', component: AdminDashboardComponent}
     ]}
