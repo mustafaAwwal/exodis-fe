@@ -1,4 +1,4 @@
-import {Router,RouterModule, Routes} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core'
 import {LandingPageComponent} from 'src/app/components/pages/common/landing-page/landing-page.component';
 import {LoginComponent} from 'src/app/components/pages/auth/login/login.component';
