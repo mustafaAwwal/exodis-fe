@@ -44,6 +44,15 @@ export class SignUpComponent implements OnInit {
     'rePassword' : [
       {type: 'required', massage: 'Plz re-enter the passwrod'}
       
+    ],
+    'firstName' : [
+      {type: 'required', massage: 'First Name is mandatory'}
+    ],
+    'lastName' : [
+      {type: 'required', massage: 'Last Name is mandatory'}
+    ],
+    'birthDate': [
+      {type:'required', massage: 'Birth Date is mandatory'}
     ]
   }
   
@@ -62,7 +71,10 @@ export class SignUpComponent implements OnInit {
       country: ['',[Validators.required]],
       businessName: ['',[Validators.required]],
       password: ['',[Validators.required,Validators.minLength(7)]],
-      rePassword: ['',[Validators.required,Validators.minLength(7)]]
+      rePassword: ['',[Validators.required,Validators.minLength(7)]],
+      firstName: ['',[Validators.required]],
+      lastName: ['',[Validators.required]],
+      birthDate: ['',[Validators.required]]
     }, { validator: reTypePasswordValidator })
     
   }

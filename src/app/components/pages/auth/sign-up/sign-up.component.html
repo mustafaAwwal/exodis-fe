@@ -2,6 +2,26 @@
     <form autocomplete = "off" class="customFormStyling signUpAreaArrangement" [formGroup]= "signUpForm" (ngSubmit)="signUp(signUpForm.value)">
         <div class="form-group row">
           <div class="col-md-6 col-12">
+              <label for="firstName" >First Name</label>
+              <input type="text" formControlName="firstName" class="form-control" id="text" placeholder="Enter First Name">
+              <div *ngFor="let validation of signUpFormValidations.firstName">
+                <div *ngIf="signUpForm.get('firstName').dirty || signUpForm.get('firstName').touched">
+                    <div class="errorMassage" @errorInsertionAnimation *ngIf="signUpForm.get('firstName').hasError(validation.type)">{{validation.massage}}</div>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-6 col-12">
+              <label for="lastName">Last Name</label>
+              <input type="text" formControlName="lastName" class="form-control" id="lastName"  placeholder="Enter last name">
+              <div *ngFor="let validation of signUpFormValidations.lastName">
+                <div *ngIf="signUpForm.get('lastName').dirty || signUpForm.get('lastName').touched">
+                  <div class="errorMassage" @errorInsertionAnimation *ngIf="signUpForm.get('lastName').hasError(validation.type)">{{validation.massage}}</div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-6 col-12">
               <label for="staticEmail" >Email</label>
               <input type="email" formControlName="email" class="form-control" id="email" placeholder="Enter Email">
               <div *ngFor="let validation of signUpFormValidations.email">
@@ -22,31 +42,43 @@
         </div>
         <div class="form-group row">
           <div class="col-md-6 col-12">
-              <label for="country" >Country</label>
-              <div class="customSelectMenu">
-                <select class="form-control" id="country" formControlName="country">
-                  <option value="" selected>Choose Country</option>
-                  <option *ngFor="let country of countries" value="{{country.name}}">{{country.name}}</option>
-                </select>
-                <div *ngIf="signUpForm.get('country').touched || signUpForm.get('country').dirty">
-                  <div *ngFor="let validation of signUpFormValidations.country">
-                    <div @errorInsertionAnimation class="errorMassage" *ngIf="signUpForm.get('country').hasError('required')">{{validation.massage}}</div>
-                  </div>
+            <label for="country" >Country</label>
+            <div class="customSelectMenu">
+              <select class="form-control" id="country" formControlName="country">
+                <option value="" selected>Choose Country</option>
+                <option *ngFor="let country of countries" value="{{country.name}}">{{country.name}}</option>
+              </select>
+              <div *ngIf="signUpForm.get('country').touched || signUpForm.get('country').dirty">
+                <div *ngFor="let validation of signUpFormValidations.country">
+                  <div @errorInsertionAnimation class="errorMassage" *ngIf="signUpForm.get('country').hasError('required')">{{validation.massage}}</div>
                 </div>
               </div>
-              
             </div>
-          <div class="col-md-6 col-12">
-              <label for="businessName" >BusinessName</label>
-              <input type="text" formControlName="businessName" class="form-control" id="businessName" placeholder="Enter BrandName">
-              <div *ngFor="let validation of signUpFormValidations.businessName">
-                <div *ngIf="signUpForm.get('businessName').dirty || signUpForm.get('businessName').touched ">
-                  <div @errorInsertionAnimation class="errorMassage" *ngIf="signUpForm.get('businessName').hasError(validation.type)">
-                    {{validation.massage}}
-                  </div>
+            
+          </div>
+          <div class="col-md-3 col-12">
+            <label for="businessName" >BusinessName</label>
+            <input type="text" formControlName="businessName" class="form-control" id="businessName" placeholder="Enter BrandName">
+            <div *ngFor="let validation of signUpFormValidations.businessName">
+              <div *ngIf="signUpForm.get('businessName').dirty || signUpForm.get('businessName').touched ">
+                <div @errorInsertionAnimation class="errorMassage" *ngIf="signUpForm.get('businessName').hasError(validation.type)">
+                  {{validation.massage}}
                 </div>
               </div>
+            </div>
           </div>
+          <div class="col-md-3 col-12">
+            <label for="birthDate">Enter Your birthdate: </label>
+            <input type="date" id="birthDate" formControlName="birthDate">
+            <div *ngIf="signUpForm.get('birthDate').dirty || signUpForm.get('birthDate').touched">
+              <div *ngFor = "let validation of signUpFormValidations.birthDate">
+                <div *ngIf="signUpForm.get('birthDate').hasError(validation.type)" class="errorMassage" @errorInsertionAnimation>
+                  {{validation.massage}}
+                </div>
+              </div>
+            </div>
+          </div>
+          
         </div>
         <div class="form-group row">
           <div class="col-md-6 col-12">
@@ -78,6 +110,9 @@
               
               
           </div>
+        </div>
+        <div class="form-group row">
+         
         </div>
         <hr class="customLineDivision">
         <div class="row">

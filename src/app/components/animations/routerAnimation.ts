@@ -1,7 +1,7 @@
-import { trigger,state,transition,style,animate,query, group } from '@angular/animations';
+import { trigger,transition,style,animate,query} from '@angular/animations';
 
-export const routerAnimations = trigger('routeAnimations',[
-
+export const routerAnimations = trigger('routerAnimations',[
+  
     transition('* <=> *',[ 
         query(':enter,:leave',[style({
             position: 'absolute',
@@ -10,6 +10,8 @@ export const routerAnimations = trigger('routeAnimations',[
             opacity: 0
 
         })],{optional: true}),
+        
+      
         query(':enter',[style({opacity: 0}),
             animate('200ms ease-in-out',style({
                 opacity: 1
