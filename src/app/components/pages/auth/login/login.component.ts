@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, Validators, FormGroup} from '@angular/forms';
-import { errorMassageAnimation } from 'src/app/components/animations/errorMassageAnimation'
+import { errorMassageAnimation } from 'src/app/components/animations/errorMassageAnimation';
+import { LoginSignUpService } from 'src/app/services/loginSignUpService/login-sign-up.service';
+import { loginRequest } from 'src/app/classes/requestClasses/loginRequest';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +14,14 @@ import { errorMassageAnimation } from 'src/app/components/animations/errorMassag
   ]
 })
 export class LoginComponent implements OnInit {
-
+  headers: any[];
+  loginRequestData: loginRequest;
   loginDataForm : FormGroup;
+  private credentialsErrors = [
+    { statusCode: '203' , massage: "password doesn't match"},
+    { statusCode: '204' , massage: 'Username Not Found'}
+  ]
+  private serverStatusCode = "";
   private loginValidationMassages = {
     'email' : [
       {type: 'required',massage: 'Email Is Required'},
@@ -27,7 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  constructor(private router: Router, private fb: FormBuilder) { 
+  constructor(private router: Router, private fb: FormBuilder,private loginService: LoginSignUpService) { 
     this.buildingLoginForm();
   }
 
@@ -54,9 +62,20 @@ export class LoginComponent implements OnInit {
   
 
   login(loginDataForm) {
-    console.log(loginDataForm);
-    this.router.navigate(['admin','dashboard'])
-
+    this.loginRequestData = loginDataForm;
+    console.log(this.loginRequestData);
+    this.loginService.login(loginDataForm).subscribe(res=>{
+      if(res.status == 200) {
+        sessionStorage.setItem('token', res.body.token)
+        sessionStorage.setItem('role', res.body.role)
+        this.router.navigate(['admin', 'dashboard']);
+      } else{
+        this.serverStatusCode = ""
+        this.serverStatusCode += res.status;
+      }
+    }
+      
+    )
       
   }
 

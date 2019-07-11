@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule,FormsModule} from '@angular/forms';
 
+// Imports for http Services
+import { HttpClientModule } from '@angular/common/http'
+
 //Router Module
 import { AppRoutingModule} from './routerModule'
 
@@ -23,8 +26,6 @@ import { LandingPageComponent } from './components/pages/common/landing-page/lan
 import { HeaderComponent } from './components/UI/header/header.component';
 import { LoginComponent } from './components/pages/auth/login/login.component';
 import { SignUpComponent } from './components/pages/auth/sign-up/sign-up.component';
-import { AdminDashboardComponent } from './components/pages/admin/admin-dashboard/admin-dashboard.component';
-import { SideNavComponent } from './components/UI/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +33,7 @@ import { SideNavComponent } from './components/UI/side-nav/side-nav.component';
     LandingPageComponent,
     HeaderComponent,
     LoginComponent,
-    SignUpComponent,
-    AdminDashboardComponent,
-    SideNavComponent
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +41,8 @@ import { SideNavComponent } from './components/UI/side-nav/side-nav.component';
     FontAwesomeModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -50,7 +50,10 @@ import { SideNavComponent } from './components/UI/side-nav/side-nav.component';
 export class AppModule { 
 
   constructor() {
-    library.add(faWindowMaximize,faHistory,faSlidersH,faUserCircle)
+    library.add(faWindowMaximize,
+      faHistory,
+      faSlidersH,
+      faUserCircle)
   }
 
 }
