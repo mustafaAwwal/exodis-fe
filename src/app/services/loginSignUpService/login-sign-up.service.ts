@@ -15,7 +15,7 @@ export class LoginSignUpService {
 
   login(loginRequest: loginRequest): Observable<HttpResponse<any>> {
     let url = environment_url + "users/login"
-    return this.http.post<HttpResponse<loginResponse>>(url,loginRequest,{observe: 'response'})
+    return this.http.post<HttpResponse<loginResponse>>(url, loginRequest, {observe: 'response'});
   }
 
 }

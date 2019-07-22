@@ -6,7 +6,7 @@
         <div class="col-md-4 offset-lg-0 offset-md-4 offset-sm-4 offset-2 col-4">
             <div class="ml-auto loginAreaArrangement loginArea">
                 <form class="customFormStyling " [formGroup]="loginDataForm" (ngSubmit)="login(loginDataForm.value)" autocomplete="off">
-                    <div class="form-group">
+                    <div class="form-group custom-form-group">
                         <div *ngFor="let errors of credentialsErrors">
                             <div class="errorMassage" @errorInsertionAnimation *ngIf="serverStatusCode == errors.statusCode">{{errors.massage}}</div>
                         </div>

@@ -16,19 +16,18 @@ import { loginRequest } from 'src/app/classes/requestClasses/loginRequest';
 export class LoginComponent implements OnInit {
   headers: any[];
   loginRequestData: loginRequest;
-  loginDataForm : FormGroup;
+  loginDataForm: FormGroup;
   private credentialsErrors = [
     { statusCode: '203' , massage: "password doesn't match"},
     { statusCode: '204' , massage: 'Username Not Found'}
-  ]
+  ];
   private serverStatusCode = "";
   private loginValidationMassages = {
-    'email' : [
+    email : [
       {type: 'required',massage: 'Email Is Required'},
       {type: 'pattern',massage: 'enter a valid email address'}
-      
     ],
-    'password' : [
+    password : [
       {type: 'required',massage: 'Password is Required'},
       {type: 'minlength',massage: 'password is less than 8 characters'}
     ]
@@ -40,16 +39,15 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    
   }
 
   buildingLoginForm() {
 
     this.loginDataForm = this.fb.group({
-      email: ['',[
+      email: ['', [
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
-      password: ['',[
+      password: ['', [
         Validators.required,
         Validators.minLength(7)
       ]]
@@ -58,25 +56,21 @@ export class LoginComponent implements OnInit {
 
 
   }
-  
-  
 
   login(loginDataForm) {
     this.loginRequestData = loginDataForm;
     console.log(this.loginRequestData);
-    this.loginService.login(loginDataForm).subscribe(res=>{
-      if(res.status == 200) {
-        sessionStorage.setItem('token', res.body.token)
-        sessionStorage.setItem('role', res.body.role)
-        this.router.navigate(['admin', 'dashboard']);
-      } else{
-        this.serverStatusCode = ""
+    this.loginService.login(loginDataForm).subscribe(res => {
+      if (res.status === 200) {
+        sessionStorage.setItem('token', res.body.token);
+        sessionStorage.setItem('role', res.body.role);
+        this.router.navigate(['user', 'home']);
+      } else {
+        this.serverStatusCode = '';
         this.serverStatusCode += res.status;
       }
     }
-      
-    )
-      
+    );
   }
 
 }
